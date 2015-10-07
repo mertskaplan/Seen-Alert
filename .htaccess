@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /seenlink/
+RewriteCond %{HTTP_HOST} www\.mertskaplan\.com/seenlink/ [nc]
+RewriteRule (.*) http://mertskaplan.com/seenlink/$1 [R=301,L,R]
+
+ErrorDocument 404 /index.php
+
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?short=$1
+
+<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+  Header unset Cache-Control
+</FilesMatch>
